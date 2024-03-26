@@ -1,0 +1,43 @@
+<div class="min-h-screen flex justify-center items-center bg-gray-100">
+  <form class="w-96 bg-white shadow-md rounded-lg p-8" [formGroup]="registerForm" (ngSubmit)="register()">
+    <h1 class="text-3xl font-bold text-center mb-6">Registrarse</h1>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Nombre Completo</label>
+      <input
+        class="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="name" type="text" placeholder="Jane Doe" formControlName="name">
+      <span class="text-red-600 font-bold" *ngIf="hasErrors('name', 'required')">El nombre es requerido.</span>
+      <span class="text-red-600 font-bold" *ngIf="hasErrors('name', 'minlength')">Debe tener mínimo 6 caracteres.</span>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+      <input
+        class="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="email" type="email" placeholder="janedoe@gmail.com" formControlName="email">
+      <span class="text-red-600 font-bold" *ngIf="hasErrors('email', 'required')">El email es requerido.</span>
+      <span class="text-red-600 font-bold" *ngIf="hasErrors('email', 'email')">Ingresa un email válido.</span>
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Contraseña</label>
+      <input
+        class="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="password" type="password" placeholder="*******" formControlName="password">
+      <span class="text-red-600 font-bold" *ngIf="hasErrors('password', 'required')">La contraseña es requerida.</span>
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="confirmPassword">Confirmar Contraseña</label>
+      <input
+        class="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="confirmPassword" type="password" placeholder="*******" formControlName="confirmPassword">
+      <span class="text-red-600 font-bold" *ngIf="hasErrors('confirmPassword', 'required')">La confirmación de contraseña es requerida.</span>
+      <span class="text-red-600 font-bold" *ngIf="hasErrors('confirmPassword', 'passNotMatch')">Las contraseñas no coinciden.</span>
+    </div>
+    <button
+      class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+      type="submit">Crear una cuenta</button>
+    <div class="text-center mt-10 space-x-1">
+      <span>¿Ya tienes una cuenta?</span>
+      <a class="text-gray-700 text-sm font-bold hover:underline" routerLink="/iniciosesion">Iniciar Sesión</a>
+    </div>
+  </form>
+</div>
